@@ -9,6 +9,7 @@ from flask2.db import get_db
 bp = Blueprint('dogs', __name__, url_prefix='/')
 
 @bp.route('/')
+@login_required
 def index():
     db = get_db()
     dogs = db.execute(
@@ -20,7 +21,7 @@ def index():
     return render_template('index.html', dogs=dogs)
 
 @bp.route('/create', methods=['POST'])
-# @login_required
+@login_required
 def create():
     db = get_db()
     dogname = request.form['dogname']

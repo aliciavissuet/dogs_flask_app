@@ -71,15 +71,18 @@ def login():
 def logout():
     print('logout')
     session.clear()
-    return redirect(url_for('auth/login.html'))
+    print('here2')
+    # print(session['user_id'])
+    return redirect(url_for('auth.login'))
 
 
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         print('here')
-        print(g)
-        if g is None:
+        print(session)
+        # print(session['user_id'])
+        if not 'user_id' in session:
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)
