@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Edit Dog</h2>
+    
+    <form action="{{url_for('dogs.update', dogname=dog['dogname'])}}"  method='POST'>
+        <label for="">Name of Dog
+            <input type="text" name='dogname' value="{{dog['dogname']}}">
+        </label>
+        <br>
+        <label for="">Color
+            <input type="text" name='color' value="{{dog['color']}}">
+        </label>
+        <br>
+        <label for="">Breed
+            <input type="text" name='breed' value="{{dog['breed']}}">
+        </label>
+        <br>
+        <label for="">Photo URL
+            <input type="text" name='photo_url' value="{{dog['photo_url']}}">
+        </label>
+        <br>
+        <input type="hidden" name='old_dog_name' value="{{dog['dogname']}}">
+        <input type="submit" value='Update dog!'>
+        <br>
+    
+    </form>
+</body>
+</html>

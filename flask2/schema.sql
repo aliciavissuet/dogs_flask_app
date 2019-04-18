@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS dog_owner;
+DROP TABLE IF EXISTS dog;
+
+CREATE TABLE dog_owner (
+  id INTEGER PRIMARY KEY,
+  username TEXT UNIQUE NOT NULL,
+  pw TEXT NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE dog (
+  id INTEGER PRIMARY KEY,
+  dogname TEXT UNIQUE NOT NULL,
+  color TEXT NOT NULL,
+  breed TEXT NOT NULL,
+  photo_url TEXT,
+  dog_owner_id INTEGER
+ REFERENCES dog_owner
+(id)
+);
